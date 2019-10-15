@@ -50,7 +50,10 @@ public class Task implements Comparable<Task> {
     private int level = 0;
 
 
-
+    public Task(ITaskService service, Object param) {
+        this.service = service;
+        this.param = param;
+    }
 
 
     /**
@@ -67,13 +70,14 @@ public class Task implements Comparable<Task> {
     }
 
     /**
-     *  一般定时队列
-     * @param retry 重试次数
-     * @param service 调用服务
-     * @param param 调用参数
+     * 一般定时队列
+     *
+     * @param retry         重试次数
+     * @param service       调用服务
+     * @param param         调用参数
      * @param retryInterval 时间间隔,单位毫秒
      */
-    public Task(int retry,ITaskService service,Object param,int retryInterval){
+    public Task(int retry, ITaskService service, Object param, int retryInterval) {
         this.retry = retry;
         this.service = service;
         this.param = param;

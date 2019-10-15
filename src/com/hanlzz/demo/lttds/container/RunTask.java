@@ -13,7 +13,7 @@ public class RunTask implements Runnable {
     @Override
     public void run() {
         try {
-            if (!checkTask()){
+            if (!checkTask()) {
                 return;
             }
             boolean res;
@@ -22,10 +22,10 @@ public class RunTask implements Runnable {
             } catch (Throwable e) {
                 res = false;
             }
-            if (!res){
-                if (task.getRetry() > 0){
+            if (!res) {
+                if (task.getRetry() > 0) {
                     TaskUtils.offerTask(task);
-                }else {
+                } else {
                     task.getService().failedEnd(task.getParam());
                 }
             }
@@ -34,14 +34,14 @@ public class RunTask implements Runnable {
         }
     }
 
-    private boolean checkTask(){
-        if (task == null || task.getRetry() < 0){
+    private boolean checkTask() {
+        if (task == null || task.getRetry() < 0) {
             return false;
         }
         return task.getService() != null;
     }
 
-    public RunTask(Task task, ThreadSemaphore semaphore){
+    public RunTask(Task task, ThreadSemaphore semaphore) {
         this.task = task;
         this.semaphore = semaphore;
     }

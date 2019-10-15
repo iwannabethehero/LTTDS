@@ -17,6 +17,9 @@ public class TaskUtils {
     private volatile static boolean isOpen = false;
 
     private static final int BASE_CORE = 5;
+    static {
+        openTaskService();
+    }
 
     public synchronized static void openTaskService() {
         if (!isOpen) {

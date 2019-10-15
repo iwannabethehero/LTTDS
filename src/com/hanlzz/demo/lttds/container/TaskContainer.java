@@ -26,7 +26,8 @@ public class TaskContainer {
 
 
     {
-//        taskQueue = new SimpleFastQueue<Task>();
+
+//        taskQueue = new SimpleFastQueue<Task>(); //性能不好换这个
         taskQueue = new ConcurrentLinkedQueue<Task>();
         priorityQueue = new PriorityBlockingQueue<Task>();
     }
